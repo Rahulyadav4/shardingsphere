@@ -1,0 +1,5 @@
+-- logical commits before the actual commit done for shardingsphere --
+
+23-06-2026--->fork the project.Cloned to local system.Gone through the project structure.checked the ANTLR plug-in and tried to install.did not work out.
+              So prepared with the JUNIT test .
+24-06-2026--->updated the smaller changes.cleaned the project and re built done.some asynced dependencies creating built errors.fixing it
