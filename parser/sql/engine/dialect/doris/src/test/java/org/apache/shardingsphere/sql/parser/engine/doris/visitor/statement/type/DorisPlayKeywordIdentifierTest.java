@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DorisPlayKeywordIdentifierTest {
     
-    private static final CacheOption CACHE_OPTION = new CacheOption(128, 1024L);
+    private static final CacheOption CACHE_OPTION = new CacheOption();
     
     @Test
     void assertUnquotedPlayIdentifierRejected() {
@@ -42,5 +42,12 @@ class DorisPlayKeywordIdentifierTest {
         SQLParserEngine parserEngine = new SQLParserEngine("Doris", CACHE_OPTION);
         SQLStatementVisitorEngine visitorEngine = new SQLStatementVisitorEngine("Doris");
         assertDoesNotThrow(() -> visitorEngine.visit(parserEngine.parse("SELECT `play` FROM t_play", false)));
+    }
+    
+    @Test
+    void assertUcaseFunctionParsed() {
+        SQLParserEngine parserEngine = new SQLParserEngine("Doris", CACHE_OPTION);
+        SQLStatementVisitorEngine visitorEngine = new SQLStatementVisitorEngine("Doris");
+        assertDoesNotThrow(() -> visitorEngine.visit(parserEngine.parse("SELECT UCASE(UPPER(name)) FROM t", false)));
     }
 }
